@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
-    //課題
+    //課題作成
     public function add()
     {
         return view('admin.profile.create');
