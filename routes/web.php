@@ -16,3 +16,19 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+use App\Http\Controllers\Admin\NewsController;
+Route::controller(NewsController::class)->prefix('admin')->group(function () {
+    Route::get('/news/create', 'add');
+});
+
+//No.19 PHP/Laravel 09 Routingについて理解する課題（再度）（2025/01/05）
+use App\Http\Controllers\Admin\ProfileController;
+Route::controller(ProfileController::class)->prefix('admin')->group(function () {
+    Route::get('/profile/create', 'add');
+    Route::post('/profile/edit', 'edit');
+});
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
