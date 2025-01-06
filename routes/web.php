@@ -25,8 +25,8 @@ Route::controller(NewsController::class)->prefix('admin')->group(function () {
 //No.19 PHP/Laravel 09 Routingについて理解する課題（再度）（2025/01/05）
 use App\Http\Controllers\Admin\ProfileController;
 Route::controller(ProfileController::class)->prefix('admin')->group(function () {
-    Route::get('/profile/create', 'add');
-    Route::post('/profile/edit', 'edit');
+    Route::get('/profile/create', 'add')->middleware('auth');
+    Route::post('/profile/edit', 'edit')->middleware('auth');
 });
 
 Auth::routes();
