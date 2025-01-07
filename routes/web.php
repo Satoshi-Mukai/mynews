@@ -26,9 +26,10 @@ Route::controller(NewsController::class)->prefix('admin')->name('admin.')->middl
 
 //No.19 PHP/Laravel 09 Routingについて理解する課題（再度）（2025/01/05）
 use App\Http\Controllers\Admin\ProfileController;
-Route::controller(ProfileController::class)->prefix('admin')->group(function () {
-    Route::get('/profile/create', 'add')->middleware('auth');
-    Route::post('/profile/edit', 'edit')->middleware('auth');
+Route::controller(ProfileController::class)->prefix('admin')->name('profile.')->middleware('auth')->group(function () {
+    Route::get('profile/create', 'add')->name('profile.add');
+    Route::post('profile/create', 'create')->name('profile.create');
+    Route::post('profile/edit', 'update')->name('profile.edit');
 });
 
 Auth::routes();

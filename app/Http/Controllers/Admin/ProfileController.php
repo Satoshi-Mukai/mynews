@@ -13,7 +13,8 @@ class ProfileController extends Controller
         return view('admin.profile.create');
     }
 
-    public function create()
+    // 以下を追記（2025/01/07）
+    public function create(Request $request)
     {
         return redirect('admin/profile/create');
     }
