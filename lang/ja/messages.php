@@ -1,5 +1,4 @@
 <?php
-
 return [
     'login' => 'ログイン',
     'logout' => 'ログアウト',
