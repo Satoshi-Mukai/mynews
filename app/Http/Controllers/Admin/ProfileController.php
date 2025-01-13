@@ -10,7 +10,7 @@ use App\Models\Profile;
 
 class ProfileController extends Controller
 {
-    //課題作成
+
     public function add()
     {
         return view('admin.profile.create');
