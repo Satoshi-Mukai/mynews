@@ -73,6 +73,9 @@ class NewsController extends Controller
         return view('admin.news.edit', ['news_form' => $news]);
     }
 
+
+
+
     public function update(Request $request)
     {
         //Validationをかける
