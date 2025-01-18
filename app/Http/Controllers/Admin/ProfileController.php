@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 
 
 use App\Models\Profile;
+use App\Models\Profile_History;
+use Carbon\Carbon;
 
 class ProfileController extends Controller
 {
@@ -42,6 +44,7 @@ class ProfileController extends Controller
             abort(404);
         }
         return view('admin.profile.edit', ['profile_form' => $profile]);
+
     }
 
 
@@ -60,10 +63,17 @@ class ProfileController extends Controller
         unset($profile_form['_token']);
 
         //該当するデータを上書きして保存する
-        $profile->fill($profile_form);
-        $profile->save();
+        $profile->fill($profile_form)->save();
 
-        return redirect('admin/profile/edit');
+        // 以下を追記
+        $profile_history = new Profile_History();
+        $profile_history->profile_id = $profile->id;
+        $profile_history->edited_at = Carbon::now();
+        $profile_history->save();
+        // 追記ここまで
+
+
+        return redirect('admin/profile/edit?id=1');//メイン編集者（id=1）の編集画面に今は戻るようにする
     }
 
 }
