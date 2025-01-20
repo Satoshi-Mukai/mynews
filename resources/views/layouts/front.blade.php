@@ -78,6 +78,10 @@
             {{-- ここまでナビゲーションバー --}}
 
             <main class="py-4">
+
+                <h1 style="text-align: center">Satoshi's Webサイトへようこそ！！！</h1>
+
+
                 {{-- コンテンツをここに入れるため、@yieldで空けておきます --}}
                 @yield('content')
             </main>
